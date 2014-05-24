@@ -6,6 +6,7 @@
 
 package com.webempleados.servlets;
 
+import com.webempleados.daos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +14,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.webempleados.daos.EmpleadoDAO;
+import com.webempleados.entidades.Empleado;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +40,31 @@ public class ServletEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        String accion = request.getParameter("accion");
+        
+        if ( ("Guardar").equals(accion) ){
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
+            String  nro_identificacion = request.getParameter("nro_identificacion");
+            String nombres = request.getParameter("nombres");
+            String apellido1 = request.getParameter("apellido1");
+            String apellido2 = request.getParameter("apellido2");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String cargo = request.getParameter("cargo");
+            try {
+                empleadoDAO.crearEmpleado(new Empleado(Long.parseLong(nro_identificacion), nombres, apellido1, apellido2, direccion, Long.parseLong(telefono), Long.parseLong(cargo)));
+            } catch (Exception e) {
+                Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
+                request.setAttribute("mensaje", e.getMessage());
+                
+            }
+            
+            
+        }
+        
+        
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

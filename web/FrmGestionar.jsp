@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Gestionar Empleado</title>
         <link rel="stylesheet" href="css/bootstrap.css"/>
         <link rel="stylesheet" href="css/dashboard.css"/>
         <script src="js/jquery-1.10.2.js"></script>
@@ -18,7 +18,7 @@
     <body>
 
         <div id="wrapper">
-            
+
             <!-- Menu Horizontal -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Agrupación de Elementos en navbar para dispositivos mobiles-->
@@ -41,7 +41,7 @@
                 </div> <!-- Fin Barra Colapsada -->
             </nav>
 
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="ServletEmpleado" method="POST" >
                 <fieldset>
 
                     <!-- Form Name -->
@@ -110,7 +110,42 @@
                         </div>
                     </div>
 
+                    <div class="btn-group col-lg-offset-4 col-lg-4">
+                        <!--<button type="button" class="btn btn-default" name="btnnuevo" id="btnnuevo">Nuevo</button>-->
+                        <input type="submit" class="btn btn-default" name="accion" value="Guardar" id="btnguardar" />
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalBuscar" name="btnbuscar" id="btnbuscar">Consultar</button>
+                        <input type="submit" class="btn btn-default" name="accion" value="Modificar" id="btnmodificar" /> 
+                        <button type="button" class="btn btn-default" name="btneliminar" id="btneliminar">Eliminar</button> 
+
+                    </div>
+
                 </fieldset>
+            </form>
+
+            <!-- Modal Buscar-->
+            <form class="form-horizontal" action="ServletEmpleado" method="POST" >
+                <div class="modal fade" id="ModalBuscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Buscar Empleado</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="buscar">Número de Identificación</label>  
+                                    <div class="col-md-4">
+                                        <input id="buscar_emp" name="buscar_emp" placeholder="" class="form-control input-md"  type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <input type="submit" value="Consultar" class="btn btn-primary" name="accion" id="btnbuscarb">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
 
         </div>

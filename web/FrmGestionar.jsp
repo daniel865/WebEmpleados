@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/dashboard.css"/>
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/bootstrap.js"></script>
     </head>
@@ -28,23 +29,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Donaciones Web</a>
+                    <a class="navbar-brand" href="#">Web Empleados</a>
                 </div>
 
                 <!-- Colección de Link del Nav para el dashboard  parte izquierda-->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="#><i class="fa fa-dashboard"></i> Inicio</a></li>
-                        <li class="dropdown active">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-save"></i> Gestionar <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gestionar Usuario</a></li>
-                                <li><a href="#">Gestionar Donante</a></li>
-                                <li><a href="#">Gestionar Bolsa de Sangre</a></li>
-                                <li><a href="#">Gestionar Hospital</a></li>
-                                <li><a href="#">Gestionar Jornada de Donación</a></li>
-                            </ul>                      
-                        </li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
                     </ul>
 
                 </div> <!-- Fin Barra Colapsada -->

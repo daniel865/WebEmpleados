@@ -6,6 +6,20 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+    String mensaje = request.getAttribute("mensaje")!=null ? (String) request.getAttribute("mensaje") : null;
+    String nro_identificacion = request.getAttribute("nro_identificacion")!=null ? (String) request.getAttribute("nro_identificacion") : "";
+ %>
+
+
+<%if (mensaje != null) {%>
+<script>
+    alert('<%=mensaje%>');
+
+</script>
+<%}%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

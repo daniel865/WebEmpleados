@@ -109,16 +109,20 @@ public class ServletEmpleado extends HttpServlet {
                         request.setAttribute("telefono", telefono);
                         request.setAttribute("cargo", cargo);
                     }
+                    request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
                 } else {
                     if (("Eliminar").equals(accion)) {
                         EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
                         String id = request.getParameter("eliminar_emp");
                         try {
-                            
+                            empleadoDAO.eliminarEmpleado(Long.parseLong(id));
+                            request.setAttribute("mensaje", "Empleado eliminado correctament");
                         } catch (Exception e) {
                             Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
+                            request.setAttribute("mensaje", "Error al eliminar empleado");
                         }
                     }
+                    request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
                 }
             }
         }

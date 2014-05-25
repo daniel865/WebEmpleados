@@ -39,7 +39,7 @@ public class Empleado {
         this.cargo = cargo;
     }
 
-    public long getCargo() {
+    public int getCargo() {
         return cargo;
     }
 

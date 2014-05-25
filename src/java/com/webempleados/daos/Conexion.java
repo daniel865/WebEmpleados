@@ -8,6 +8,7 @@ package com.webempleados.daos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import oracle.jdbc.driver.OracleDriver;
 
 /**
  *

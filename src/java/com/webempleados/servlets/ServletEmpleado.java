@@ -96,8 +96,28 @@ public class ServletEmpleado extends HttpServlet {
                     String telefono = request.getParameter("telefono");
                     String cargo = request.getParameter("cargo");
                     try {
-                        
+                        empleadoDAO.modificarEmpleado(new Empleado(Long.parseLong(nro_identificacion), nombres, apellido1, apellido2, direccion, Long.parseLong(telefono), Integer.parseInt(cargo)));
+                        request.setAttribute("mensaje", "Empleado modificado correctamente");
                     } catch (Exception e) {
+                        Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
+                        request.setAttribute("mensaje", e.getMessage());
+                        request.setAttribute("nro_identificacion", nro_identificacion);
+                        request.setAttribute("nombres", nombres);
+                        request.setAttribute("apellido1", apellido1);
+                        request.setAttribute("apellido2", apellido2);
+                        request.setAttribute("direccion", direccion);
+                        request.setAttribute("telefono", telefono);
+                        request.setAttribute("cargo", cargo);
+                    }
+                } else {
+                    if (("Eliminar").equals(accion)) {
+                        EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
+                        String id = request.getParameter("eliminar_emp");
+                        try {
+                            
+                        } catch (Exception e) {
+                            Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
+                        }
                     }
                 }
             }

@@ -111,5 +111,28 @@ public class EmpleadoDAO extends BaseDAO {
             connectionManager.cerrar(connection);
         }
     }
+    
+    public void eliminarEmpleado(long identificacion)throws Exception{
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = connectionManager.conectar();
+            ps = connection.prepareStatement("DELETE FROM EMPLEADOS WHERE identificacion_emp=?");
+            ps.setLong(1, identificacion);
+            ps.execute();
+        } catch (Exception e) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new Exception("Error al eliminar empleado", e);
+        }finally{
+            try {
+                if ( ps!=null && !ps.isClosed() ){
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            connectionManager.cerrar(connection);
+        }
+    }
 
 }

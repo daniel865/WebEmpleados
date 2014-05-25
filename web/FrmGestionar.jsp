@@ -168,7 +168,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <input type="submit" value="Eliminar" class="btn btn-primary" name="accion" id="btnbuscarb">
+                                <input type="submit" value="Eliminar" class="btn btn-primary" name="accion" id="btnbuscare">
                             </div>
                         </div>
                     </div>

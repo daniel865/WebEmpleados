@@ -8,7 +8,7 @@ package com.webempleados.daos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import oracle.jdbc.driver.OracleDriver;
+import oracle.jdbc.OracleDriver;
 
 /**
  *
@@ -28,7 +28,7 @@ public class Conexion {
     
     public Connection conectar()throws Exception{
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("oracle.jdbc.OracleDriver");
             return DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
             throw new Exception("Error al conectar",e);

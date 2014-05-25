@@ -42,7 +42,7 @@ public class ServletEmpleado extends HttpServlet {
         String accion = request.getParameter("accion");
 
         if (("Guardar").equals(accion)) {
-            EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:WebEmpleados"));
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:"));
             String nro_identificacion = request.getParameter("nro_identificacion");
             String nombres = request.getParameter("nombres");
             String apellido1 = request.getParameter("apellido1");
@@ -66,7 +66,7 @@ public class ServletEmpleado extends HttpServlet {
             request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
         } else {
             if (("Consultar").equals(accion)) {
-                EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:WebEmpleados"));
+                EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
                 String id = request.getParameter("buscar_emp");
                 Empleado empleado;
                 try {
@@ -87,7 +87,7 @@ public class ServletEmpleado extends HttpServlet {
                 }
             } else {
                 if (("Modificar").equals(accion)) {
-                    EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:WebEmpleados"));
+                    EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
                     String nro_identificacion = request.getParameter("nro_identificacion");
                     String nombres = request.getParameter("nombres");
                     String apellido1 = request.getParameter("apellido1");
@@ -112,7 +112,7 @@ public class ServletEmpleado extends HttpServlet {
                     request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
                 } else {
                     if (("Eliminar").equals(accion)) {
-                        EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:WebEmpleados"));
+                        EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
                         String id = request.getParameter("eliminar_emp");
                         try {
                             empleadoDAO.eliminarEmpleado(Long.parseLong(id));

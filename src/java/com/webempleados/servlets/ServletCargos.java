@@ -41,7 +41,7 @@ public class ServletCargos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        CargoDAO cargoDAO = new CargoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:WebEmpleados"));
+        CargoDAO cargoDAO = new CargoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
         out.println("<option value=''>Seleccione un cargo</option>");
         try {
             List<Cargo> listCargos = cargoDAO.listarCargos();

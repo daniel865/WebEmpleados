@@ -36,6 +36,11 @@
         <script src="js/bootstrap.js"></script>
     </head>
     <body>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#cargo').load('ServletCargos');
+            });
+        </script>
 
         <div id="wrapper">
 

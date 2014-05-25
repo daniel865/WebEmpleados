@@ -10,6 +10,12 @@
 <%
     String mensaje = request.getAttribute("mensaje")!=null ? (String) request.getAttribute("mensaje") : null;
     String nro_identificacion = request.getAttribute("nro_identificacion")!=null ? (String) request.getAttribute("nro_identificacion") : "";
+    String nombres = request.getAttribute("nombres")!=null ? (String) request.getAttribute("nombres") : "";
+    String apellido1 = request.getAttribute("apellido1")!=null ? (String) request.getAttribute("apellido1") : "";
+    String apellido2 = request.getAttribute("apellido2")!=null ? (String) request.getAttribute("apellido2") : "";
+    String direccion = request.getAttribute("direccion")!=null ? (String) request.getAttribute("direccion") : "";
+    String telefono = request.getAttribute("telefono")!=null ? (String) request.getAttribute("telefono") : "";
+    String cargo = request.getAttribute("cargo") !=null ? (String) request.getAttribute("cargo") : "";
  %>
 
 

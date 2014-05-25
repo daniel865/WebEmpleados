@@ -18,9 +18,9 @@ public class Empleado {
     private String apellido2;
     private String direccion;
     private long telefono;
-    private long cargo;
+    private int cargo;
 
-    public Empleado(long nro_identificacion, String nombres, String apellido1, String apellido2, String direccion, long telefono, long cargo) {
+    public Empleado(long nro_identificacion, String nombres, String apellido1, String apellido2, String direccion, long telefono, int cargo) {
         this.nro_identificacion = nro_identificacion;
         this.nombres = nombres;
         this.apellido1 = apellido1;
@@ -30,7 +30,7 @@ public class Empleado {
         this.cargo = cargo;
     }
 
-    public Empleado(long nro_identificacion, String nombres, String apellido1, String direccion, long telefono, long cargo) {
+    public Empleado(long nro_identificacion, String nombres, String apellido1, String direccion, long telefono, int cargo) {
         this.nro_identificacion = nro_identificacion;
         this.nombres = nombres;
         this.apellido1 = apellido1;
@@ -43,7 +43,7 @@ public class Empleado {
         return cargo;
     }
 
-    public void setCargo(long cargo) {
+    public void setCargo(int cargo) {
         this.cargo = cargo;
     }
 

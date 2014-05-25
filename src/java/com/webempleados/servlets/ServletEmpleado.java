@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.webempleados.servlets;
 
 import com.webempleados.daos.Conexion;
@@ -39,12 +38,12 @@ public class ServletEmpleado extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String accion = request.getParameter("accion");
-        
-        if ( ("Guardar").equals(accion) ){
+
+        if (("Guardar").equals(accion)) {
             EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
-            String  nro_identificacion = request.getParameter("nro_identificacion");
+            String nro_identificacion = request.getParameter("nro_identificacion");
             String nombres = request.getParameter("nombres");
             String apellido1 = request.getParameter("apellido1");
             String apellido2 = request.getParameter("apellido2");
@@ -52,19 +51,59 @@ public class ServletEmpleado extends HttpServlet {
             String telefono = request.getParameter("telefono");
             String cargo = request.getParameter("cargo");
             try {
-                empleadoDAO.crearEmpleado(new Empleado(Long.parseLong(nro_identificacion), nombres, apellido1, apellido2, direccion, Long.parseLong(telefono), Long.parseLong(cargo)));
+                empleadoDAO.crearEmpleado(new Empleado(Long.parseLong(nro_identificacion), nombres, apellido1, apellido2, direccion, Long.parseLong(telefono), Integer.parseInt(cargo)));
             } catch (Exception e) {
                 Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
                 request.setAttribute("mensaje", e.getMessage());
-                
+                request.setAttribute("nro_identificacion", nro_identificacion);
+                request.setAttribute("nombres", nombres);
+                request.setAttribute("apellido1", apellido1);
+                request.setAttribute("apellido2", apellido2);
+                request.setAttribute("direccion", direccion);
+                request.setAttribute("telefono", telefono);
+                request.setAttribute("cargo", cargo);
             }
-            
-            
+            request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
+        } else {
+            if (("Consultar").equals(accion)) {
+                EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
+                String id = request.getParameter("buscar_emp");
+                Empleado empleado;
+                try {
+                    empleado = empleadoDAO.buscarEmpleado(Long.parseLong(id));
+                    request.setAttribute("mensaje", "El Empleado fue encontrado");
+                    request.setAttribute("nro_identificacion", empleado.getNro_identificacion());
+                    request.setAttribute("nombres", empleado.getNombres());
+                    request.setAttribute("apellido1", empleado.getApellido1());
+                    request.setAttribute("apellido2", empleado.getApellido2());
+                    request.setAttribute("direccion", empleado.getDireccion());
+                    request.setAttribute("telefono", empleado.getTelefono());
+                    request.setAttribute("cargo", empleado.getCargo());
+
+                } catch (Exception e) {
+                    Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
+                    request.setAttribute("mensaje", "Empleado no existe");
+                    request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
+                }
+            } else {
+                if (("Modificar").equals(accion)) {
+                    EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "url"));
+                    String nro_identificacion = request.getParameter("nro_identificacion");
+                    String nombres = request.getParameter("nombres");
+                    String apellido1 = request.getParameter("apellido1");
+                    String apellido2 = request.getParameter("apellido2");
+                    String direccion = request.getParameter("direccion");
+                    String telefono = request.getParameter("telefono");
+                    String cargo = request.getParameter("cargo");
+                    try {
+                        
+                    } catch (Exception e) {
+                    }
+                }
+            }
         }
-        
-        
+
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

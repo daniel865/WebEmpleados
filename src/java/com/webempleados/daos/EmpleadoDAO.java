@@ -63,7 +63,7 @@ public class EmpleadoDAO extends BaseDAO {
             ps.setLong(1, identificacion);
             rs = ps.executeQuery();
             while (rs.next()) {                
-                return new Empleado(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getLong(6), rs.getLong(7));
+                return new Empleado(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getLong(6), rs.getInt(7));
             }
         } catch (Exception e) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -79,6 +79,37 @@ public class EmpleadoDAO extends BaseDAO {
             connectionManager.cerrar(connection);
         }
         return null;
+    }
+    
+    
+    public void modificarEmpleado(Empleado empleado)throws Exception{
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = connectionManager.conectar();
+            ps = connection.prepareStatement("UPDATE EMPLEADOS SET nombres_emp=?,apellido1_emp=?,apellido2_emp=?,direccion_emp=?,telefono_emp=?,cargo_emp=? WHERE identificacion_emp=?");
+            ps.setString(1, empleado.getNombres());
+            ps.setString(2, empleado.getApellido1());
+            ps.setString(3, empleado.getApellido2());
+            ps.setString(4, empleado.getDireccion());
+            ps.setLong(5, empleado.getTelefono());
+            ps.setInt(6, empleado.getCargo());
+            ps.setLong(7, empleado.getNro_identificacion());
+            ps.execute();
+          
+        } catch (Exception e) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new Exception("Error al modificar empleado", e);
+        }finally{
+            try {
+                if ( ps!=null && !ps.isClosed() ){
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            connectionManager.cerrar(connection);
+        }
     }
 
 }

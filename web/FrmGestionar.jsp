@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="nro_identificacion">Número de Identificación</label>  
                         <div class="col-md-5">
-                            <input id="nro_identificacion" name="nro_identificacion" type="text" placeholder="" class="form-control input-sm" required="">
+                            <input id="nro_identificacion" name="nro_identificacion" type="text" placeholder="" class="form-control input-sm" required="" value="<%=nro_identificacion%>">
 
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="nombres">Nombres</label>  
                         <div class="col-md-5">
-                            <input id="nombres" name="nombres" type="text" placeholder="" class="form-control input-sm" required="">
+                            <input id="nombres" name="nombres" type="text" placeholder="" class="form-control input-sm" required="" value="<%=nombres%>">
 
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="apellido1">Primer Apellido</label>  
                         <div class="col-md-5">
-                            <input id="apellido1" name="apellido1" type="text" placeholder="" class="form-control input-sm" required="">
+                            <input id="apellido1" name="apellido1" type="text" placeholder="" class="form-control input-sm" required="" value="<%=apellido1%>">
 
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="apellido2">Segundo Apellido</label>  
                         <div class="col-md-5">
-                            <input id="apellido2" name="apellido2" type="text" placeholder="" class="form-control input-sm" required="">
+                            <input id="apellido2" name="apellido2" type="text" placeholder="" class="form-control input-sm" required="" value="<%=apellido2%>">
 
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="direccion">Dirección</label>  
                         <div class="col-md-5">
-                            <input id="direccion" name="direccion" type="text" placeholder="" class="form-control input-sm" required="">
+                            <input id="direccion" name="direccion" type="text" placeholder="" class="form-control input-sm" required="" value="<%=direccion%>">
 
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="telefono">Teléfono</label>  
                         <div class="col-md-5">
-                            <input id="telefono" name="telefono" type="text" placeholder="" class="form-control input-sm">
+                            <input id="telefono" name="telefono" type="text" placeholder="" class="form-control input-sm" value="<%=telefono%>">
 
                         </div>
                     </div>

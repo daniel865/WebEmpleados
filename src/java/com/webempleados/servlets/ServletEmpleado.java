@@ -72,13 +72,14 @@ public class ServletEmpleado extends HttpServlet {
                 try {
                     empleado = empleadoDAO.buscarEmpleado(Long.parseLong(id));
                     request.setAttribute("mensaje", "El Empleado fue encontrado");
-                    request.setAttribute("nro_identificacion", empleado.getNro_identificacion());
+                    request.setAttribute("nro_identificacion", Long.toString(empleado.getNro_identificacion()));
                     request.setAttribute("nombres", empleado.getNombres());
                     request.setAttribute("apellido1", empleado.getApellido1());
                     request.setAttribute("apellido2", empleado.getApellido2());
                     request.setAttribute("direccion", empleado.getDireccion());
-                    request.setAttribute("telefono", empleado.getTelefono());
-                    request.setAttribute("cargo", empleado.getCargo());
+                    request.setAttribute("telefono", Long.toString(empleado.getTelefono()));
+                    request.setAttribute("cargo", Integer.toString(empleado.getCargo()));
+                    request.getRequestDispatcher("FrmGestionar.jsp").forward(request, response);
 
                 } catch (Exception e) {
                     Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);

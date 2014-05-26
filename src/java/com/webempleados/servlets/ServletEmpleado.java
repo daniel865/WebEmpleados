@@ -42,7 +42,7 @@ public class ServletEmpleado extends HttpServlet {
         String accion = request.getParameter("accion");
 
         if (("Guardar").equals(accion)) {
-            EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:"));
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
             String nro_identificacion = request.getParameter("nro_identificacion");
             String nombres = request.getParameter("nombres");
             String apellido1 = request.getParameter("apellido1");

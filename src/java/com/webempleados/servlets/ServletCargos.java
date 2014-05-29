@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,6 +49,7 @@ public class ServletCargos extends HttpServlet {
             for (Cargo cargo : listCargos) {
                 out.printf("<option value='%1s'>%2s</option>", cargo.getCargo(), cargo.getDescripcion());
             }
+            out.println("<script>$('#cargo option[value=4]').attr('selected', true);</script>");
         } catch (Exception e) {
             Logger.getLogger(ServletCargos.class.getName()).log(Level.WARNING, null, e);
         }finally{
@@ -71,6 +73,8 @@ public class ServletCargos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
     }
 
     /**

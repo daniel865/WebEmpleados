@@ -8,21 +8,20 @@
 <!DOCTYPE html>
 
 <%
-    String mensaje = request.getAttribute("mensaje")!=null ? (String) request.getAttribute("mensaje") : null;
-    String nro_identificacion = request.getAttribute("nro_identificacion")!=null ? (String) request.getAttribute("nro_identificacion") : "";
-    String nombres = request.getAttribute("nombres")!=null ? (String) request.getAttribute("nombres") : "";
-    String apellido1 = request.getAttribute("apellido1")!=null ? (String) request.getAttribute("apellido1") : "";
-    String apellido2 = request.getAttribute("apellido2")!=null ? (String) request.getAttribute("apellido2") : "";
-    String direccion = request.getAttribute("direccion")!=null ? (String) request.getAttribute("direccion") : "";
-    String telefono = request.getAttribute("telefono")!=null ? (String) request.getAttribute("telefono") : "";
-    String cargo = request.getAttribute("cargo") !=null ? (String) request.getAttribute("cargo") : "";
- %>
+    String mensaje = request.getAttribute("mensaje") != null ? (String) request.getAttribute("mensaje") : null;
+    String nro_identificacion = request.getAttribute("nro_identificacion") != null ? (String) request.getAttribute("nro_identificacion") : "";
+    String nombres = request.getAttribute("nombres") != null ? (String) request.getAttribute("nombres") : "";
+    String apellido1 = request.getAttribute("apellido1") != null ? (String) request.getAttribute("apellido1") : "";
+    String apellido2 = request.getAttribute("apellido2") != null ? (String) request.getAttribute("apellido2") : "";
+    String direccion = request.getAttribute("direccion") != null ? (String) request.getAttribute("direccion") : "";
+    String telefono = request.getAttribute("telefono") != null ? (String) request.getAttribute("telefono") : "";
+    String cargo = request.getAttribute("cargo") != null ? (String) request.getAttribute("cargo") : "";
+%>
 
 
 <%if (mensaje != null) {%>
 <script>
     alert('<%=mensaje%>');
-
 </script>
 <%}%>
 
@@ -37,10 +36,13 @@
     </head>
     <body>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('#cargo').load('ServletCargos');
-            });
+    $(document).ready(function() {
+        $('#cargo').load('ServletCargos');
+        $('#cargo option[value=4]').attr('selected', true);
+    });
         </script>
+
+
 
         <div id="wrapper">
 
@@ -131,6 +133,7 @@
                         <label class="col-md-4 control-label" for="cargo">Cargo</label>
                         <div class="col-md-5">
                             <select id="cargo" name="cargo" class="form-control input-sm">
+                                <option value="4">Auxiliar</option>
                             </select>
                         </div>
                     </div>
@@ -173,7 +176,7 @@
                 </div>
             </form>
 
-            
+
             <!-- Modal Eliminar-->
             <form class="form-horizontal" action="ServletEmpleado" method="POST" >
                 <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -199,11 +202,23 @@
                     </div>
                 </div>
             </form>
-            
-            
+
+
         </div>
 
 
-
+        <%if (mensaje != null) {%>
+        <script>
+            $(document).ready(function(){
+                var empleado=$('#nro_identificacion').val();
+                $.get('ServletEmpleado',{nro_identificacion:empleado},function(data){
+                    
+                });
+            });
+            
+            
+            
+        </script>
+        <%}%>
     </body>
 </html>

@@ -143,6 +143,14 @@ public class ServletEmpleado extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        String nro_identificacion = request.getParameter("nro_identificacion");
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
+        
+        
+        
+        
+        
     }
 
     /**

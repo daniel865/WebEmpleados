@@ -5,6 +5,7 @@
  */
 package com.webempleados.daos;
 
+import com.webempleados.entidades.Cargo;
 import com.webempleados.entidades.Empleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -134,5 +135,7 @@ public class EmpleadoDAO extends BaseDAO {
             connectionManager.cerrar(connection);
         }
     }
+    
+   
 
 }

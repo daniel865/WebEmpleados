@@ -41,6 +41,33 @@ public class CargoDAO extends BaseDAO{
             return cargos;
         } catch (Exception e) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new Exception("Error al listas cargos",e);
+        }finally{
+            try {
+                if ( ps!=null && !ps.isClosed() ){
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            connectionManager.cerrar(connection);
+        }
+    }
+    
+    public Cargo obtenerCargo(String empleado)throws Exception{
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs;
+        try {
+            connection = connectionManager.conectar();
+            ps = connection.prepareStatement("SELECT * FROM CARGOS WHERE codigo_car=?");
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                return new Cargo(rs.getInt(1), rs.getString(2));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new Exception("Error al obtener cargo",e);
         }finally{
             try {
                 if ( ps!=null && !ps.isClosed() ){

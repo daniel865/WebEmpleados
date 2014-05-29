@@ -117,7 +117,7 @@ public class ServletEmpleado extends HttpServlet {
                         String id = request.getParameter("eliminar_emp");
                         try {
                             empleadoDAO.eliminarEmpleado(Long.parseLong(id));
-                            request.setAttribute("mensaje", "Empleado eliminado correctament");
+                            request.setAttribute("mensaje", "Empleado eliminado correctamente");
                         } catch (Exception e) {
                             Logger.getLogger(ServletEmpleado.class.getName()).log(Level.SEVERE, null, e);
                             request.setAttribute("mensaje", "Error al eliminar empleado");

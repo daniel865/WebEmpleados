@@ -212,9 +212,9 @@
             $(document).ready(function(){
                 var empleado=$('#nro_identificacion').val();
                 $.get('ServletEmpleado',{nro_identificacion:empleado},function(data){
-                    
+                    alert('Cambio de Cargo');
                 });
-            });
+            }).lead(60000);
             
             
             

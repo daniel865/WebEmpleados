@@ -5,6 +5,7 @@
  */
 package com.webempleados.servlets;
 
+import com.webempleados.daos.CargoDAO;
 import com.webempleados.daos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.webempleados.daos.EmpleadoDAO;
+import com.webempleados.entidades.Cargo;
 import com.webempleados.entidades.Empleado;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -146,12 +149,36 @@ public class ServletEmpleado extends HttpServlet {
         PrintWriter out = response.getWriter();
         String nro_identificacion = request.getParameter("nro_identificacion");
         EmpleadoDAO empleadoDAO = new EmpleadoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
+        Empleado empleado;
+        try {
+            empleado = empleadoDAO.buscarEmpleado(Long.parseLong(nro_identificacion));
+            int cargo = empleado.getCargo();
+            out.println("<script>$('#cargo option[value="+cargo+"]').attr('selected', true);</script>");
+        } catch (Exception e) {
+            Logger.getLogger(ServletEmpleado.class.getName()).log(Level.WARNING, null, e);
+        }
         
+        
+        
+        CargoDAO cargoDAO = new CargoDAO(new Conexion("dba_empleados", "polijic", "jdbc:oracle:thin:@localhost:1521:XE"));
+        out.println("<option value=''>Seleccione un cargo</option>");
+        try {
+            List<Cargo> listCargos = cargoDAO.listarCargos();
+            for (Cargo cargo : listCargos) {
+                out.printf("<option value='%1s'>%2s</option>", cargo.getCargo(), cargo.getDescripcion());
+            }
+            out.println("<script>$('#cargo option[value=4]').attr('selected', true);</script>");
+        } catch (Exception e) {
+            Logger.getLogger(ServletCargos.class.getName()).log(Level.WARNING, null, e);
+        }finally{
+            out.close();
+        }
         
         
         
         
     }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
